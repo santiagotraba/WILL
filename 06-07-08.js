@@ -23,9 +23,7 @@ function crearClasePersona() {
             // { nombre: nombre, edad: edad} al arreglo de amigos de la persona.
             // No debe retornar nada.
             // Tu código aca:
-
-            let amigo = { nombre: nombre, edad: edad };
-            this.amigos.push(amigo);
+            this.amigos.push({ nombre: nombre, edad: edad });
         }
 
         addHobby(hobby) {
@@ -41,7 +39,8 @@ function crearClasePersona() {
             // Suponiendo que la persona tiene estos amigos: [{nombre: 'martin', edad: 31},{nombre: 'toni', edad: 33}]
             // persona.getFriends() debería devolver ['martin', 'toni']
             // Tu código aca:
-            return this.amigos.map((amigo) => amigo.nombre);
+            let devolverNombre = this.amigos.map((amigo) => amigo.nombre);
+            return devolverNombre;
         }
 
         getHobbies() {
@@ -49,7 +48,7 @@ function crearClasePersona() {
             // Ej:
             // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
             // Tu código aca:
-            return this.hobbies;
+            return hobbies;
         }
 
         getPromedioEdad() {
@@ -67,18 +66,13 @@ function crearClasePersona() {
             // }
             // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
             // Tu código aca:
-            if (this.amigos.length === 0) {
-                return 0;
+            let edadTotal = 0;
+            for (let i = 0; i < this.amigos.length; i++) {
+                edadTotal += this.amigos[i].edad;
             }
-
-            let sumaEdades = this.amigos.reduce(
-                (total, amigo) => total + amigo.edad,
-                0
-            );
-            return sumaEdades / this.amigos.length;
+            return edadTotal / this.amigos.length;
         }
     }
-
     return Persona;
 }
 
